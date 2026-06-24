@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { getBookId } from "../controllers/bookController.js";
 
 const bookRouter = Router();
 
@@ -6,10 +7,6 @@ bookRouter.get("/", (req, res) => {
   res.send("All books");
 });
 
-bookRouter.get("/:bookId", (req, res) => {
-  const { bookId } = req.params;
-
-  res.send(`Book ID ${bookId}`);
-});
+bookRouter.get("/:bookId", getBookId);
 
 export default bookRouter;
