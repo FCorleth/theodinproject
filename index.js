@@ -10,6 +10,12 @@ app.use("/authors", authorRouter);
 app.use("/books", bookRouter);
 app.use("/", indexRouter);
 
+// Middleware de captura de erro
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(error.statusCode || 500).send(error.message);
+});
+
 app.listen(PORT, (error) => {
   if (error) {
     throw error;
